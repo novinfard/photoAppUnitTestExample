@@ -13,8 +13,8 @@
 		9490D3DA23F3015900ABE2F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9490D3D823F3015900ABE2F9 /* Main.storyboard */; };
 		9490D3DC23F3015A00ABE2F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9490D3DB23F3015A00ABE2F9 /* Assets.xcassets */; };
 		9490D3DF23F3015A00ABE2F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9490D3DD23F3015A00ABE2F9 /* LaunchScreen.storyboard */; };
-		9490D3EA23F3015A00ABE2F9 /* PhotoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9490D3E923F3015A00ABE2F9 /* PhotoAppTests.swift */; };
-		9490D3F523F3063400ABE2F9 /* UserModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9490D3F423F3063400ABE2F9 /* UserModelTests.swift */; };
+		F2632A4326979D99004A5D19 /* SignupFormModelValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2632A4226979D99004A5D19 /* SignupFormModelValidatorTests.swift */; };
+		F2632A542697A181004A5D19 /* SignupFormModelValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2632A532697A181004A5D19 /* SignupFormModelValidator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +37,10 @@
 		9490D3DE23F3015A00ABE2F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9490D3E023F3015A00ABE2F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9490D3E523F3015A00ABE2F9 /* PhotoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9490D3E923F3015A00ABE2F9 /* PhotoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAppTests.swift; sourceTree = "<group>"; };
 		9490D3EB23F3015A00ABE2F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9490D3F423F3063400ABE2F9 /* UserModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelTests.swift; sourceTree = "<group>"; };
+		F2632A3F26979D33004A5D19 /* PhotoAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		F2632A4226979D99004A5D19 /* SignupFormModelValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormModelValidatorTests.swift; sourceTree = "<group>"; };
+		F2632A532697A181004A5D19 /* SignupFormModelValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormModelValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +89,7 @@
 				9490D3DB23F3015A00ABE2F9 /* Assets.xcassets */,
 				9490D3DD23F3015A00ABE2F9 /* LaunchScreen.storyboard */,
 				9490D3E023F3015A00ABE2F9 /* Info.plist */,
+				F2632A532697A181004A5D19 /* SignupFormModelValidator.swift */,
 			);
 			path = PhotoApp;
 			sourceTree = "<group>";
@@ -95,9 +97,9 @@
 		9490D3E823F3015A00ABE2F9 /* PhotoAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				9490D3E923F3015A00ABE2F9 /* PhotoAppTests.swift */,
 				9490D3EB23F3015A00ABE2F9 /* Info.plist */,
-				9490D3F423F3063400ABE2F9 /* UserModelTests.swift */,
+				F2632A3F26979D33004A5D19 /* PhotoAppTests-Bridging-Header.h */,
+				F2632A4226979D99004A5D19 /* SignupFormModelValidatorTests.swift */,
 			);
 			path = PhotoAppTests;
 			sourceTree = "<group>";
@@ -148,13 +150,14 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
-				ORGANIZATIONNAME = "Sergey Kargopolov";
+				ORGANIZATIONNAME = Novinfard;
 				TargetAttributes = {
 					9490D3CE23F3015900ABE2F9 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
 					9490D3E423F3015A00ABE2F9 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1250;
 						TestTargetID = 9490D3CE23F3015900ABE2F9;
 					};
 				};
@@ -205,6 +208,7 @@
 			files = (
 				9490D3D723F3015900ABE2F9 /* ViewController.swift in Sources */,
 				9490D3D323F3015900ABE2F9 /* AppDelegate.swift in Sources */,
+				F2632A542697A181004A5D19 /* SignupFormModelValidator.swift in Sources */,
 				9490D3D523F3015900ABE2F9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,8 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9490D3F523F3063400ABE2F9 /* UserModelTests.swift in Sources */,
-				9490D3EA23F3015A00ABE2F9 /* PhotoAppTests.swift in Sources */,
+				F2632A4326979D99004A5D19 /* SignupFormModelValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,7 +375,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appsdeveloperblog.PhotoApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.PhotoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -389,7 +392,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appsdeveloperblog.PhotoApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.PhotoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -401,6 +404,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PhotoAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -411,6 +415,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appsdeveloperblog.PhotoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PhotoAppTests/PhotoAppTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoApp.app/PhotoApp";
@@ -422,6 +428,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PhotoAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -432,6 +439,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appsdeveloperblog.PhotoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PhotoAppTests/PhotoAppTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoApp.app/PhotoApp";
