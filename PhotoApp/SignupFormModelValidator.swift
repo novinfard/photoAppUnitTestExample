@@ -14,7 +14,8 @@ class SignupFormModelValidator {
             return false
         }
 
-        if firstName.count < 3 || firstName.count > 10 {
+        if firstName.count < SignupConstants.minFirstNameLength
+            || firstName.count > SignupConstants.maxFirstNameLength {
             return false
         }
 
