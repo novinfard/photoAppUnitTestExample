@@ -52,4 +52,27 @@ class SignupFormModelValidatorTests: XCTestCase {
         XCTAssertFalse(valid, "The firstName is too short, so `isFirstNameValid` should return FALSE")
     }
 
+    func test_whenPasswordsIsTooShort_shouldReturnFalse() {
+        // Given
+        let sut = SignupFormModelValidator()
+
+        // When
+        let valid = sut.isPasswordValid(password: "aas")
+
+        // Then
+        XCTAssertFalse(valid, "The password is too short, so `isPasswordValid` should return FALSE")
+    }
+
+    func test_whenPasswordIsTooLong_shouldReturnFalse() {
+        // Given
+        let sut = SignupFormModelValidator()
+
+        // When
+        let valid = sut.isPasswordValid(password: "Samuel Andy Robin Andy Robin Andy Robin Andy Robin")
+
+        // Then
+        XCTAssertFalse(valid, "The password is too long, so `isFirstNameValid` should return FALSE")
+    }
+
+
 }
