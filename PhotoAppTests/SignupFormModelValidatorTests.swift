@@ -74,5 +74,27 @@ class SignupFormModelValidatorTests: XCTestCase {
         XCTAssertFalse(valid, "The password is too long, so `isFirstNameValid` should return FALSE")
     }
 
+    func test_whenEqualPasswordProvided_shouldReturnTrue() {
+        // Arrange
+        let sut = SignupFormModelValidator()
+
+        // Act
+        let doPassMatch = sut.doPasswordsMatch(password: "123123", repeatPassword: "123123")
+
+        // Assert
+        XCTAssertTrue(doPassMatch, "The passwords are the same, so it should return `True`")
+    }
+
+    func test_whenDifferentPasswordProvided_shouldReturnFalse() {
+        // Arrange
+        let sut = SignupFormModelValidator()
+
+        // Act
+        let doPassMatch = sut.doPasswordsMatch(password: "123123", repeatPassword: "1010")
+
+        // Assert
+        XCTAssertFalse(doPassMatch,  "The passwords are different, so it should return `False`")
+    }
+
 
 }
