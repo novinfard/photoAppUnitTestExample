@@ -39,6 +39,8 @@ class SignupWebService {
                 SignupResponseModel.self, from: data
                ) {
                 completionHandler(signupResponseModel, nil)
+            } else {
+                completionHandler(nil, .responseParseError)
             }
 
         }
