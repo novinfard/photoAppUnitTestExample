@@ -12,7 +12,18 @@ import XCTest
 class SignupWebServiceTests: XCTestCase {
 
     func test_whenReceiveSuccessfulResponse_returnsSuccess() {
-        let sut = SignupWebService()
+        // Given
+        let config = URLSessionConfiguration.ephemeral
+        config.protocolClasses = [MockURLProtocol.self]
+        let urlSession = URLSession(configuration: config)
+        let jsonString = "{\"status\":\"ok\"}"
+        MockURLProtocol.stubResponseData = jsonString.data(using: .utf8)
+
+        // When
+        let sut = SignupWebService(
+            urlString: "http://appsdeveloperblog.com:8080/signup-mock-service/users",
+            urlSession: urlSession
+        )
         let signupFormRequestModel = SignupFormRequestModel(
             firstName: "Ahmad",
             lastName: "Farahani",
@@ -22,11 +33,12 @@ class SignupWebServiceTests: XCTestCase {
 
         let exp = expectation(description: "Signup Service Response Expectation")
         sut.signup(withForm: signupFormRequestModel) { (signupResponseModel, error) in
+            // Then
             XCTAssertEqual(signupResponseModel?.status, "ok")
             exp.fulfill()
         }
 
-        wait(for: [exp], timeout: 3)
+        wait(for: [exp], timeout: 10)
     }
 
    
