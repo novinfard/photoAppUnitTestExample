@@ -9,5 +9,5 @@
 import Foundation
 
 enum SignupError: Error {
-    
+    case responseParseError
 }
