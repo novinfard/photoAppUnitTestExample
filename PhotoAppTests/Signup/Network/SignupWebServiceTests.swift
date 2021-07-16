@@ -21,7 +21,7 @@ class SignupWebServiceTests: XCTestCase {
 
         // When
         let sut = SignupWebService(
-            urlString: "http://appsdeveloperblog.com:8080/signup-mock-service/users",
+            urlString: SignupConstants.signupUrlString,
             urlSession: urlSession
         )
         let signupFormRequestModel = SignupFormRequestModel(
