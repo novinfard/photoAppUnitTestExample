@@ -72,5 +72,22 @@ class SignupWebServiceTests: XCTestCase {
         wait(for: [exp], timeout: 10)
     }
 
+    func test_whenInvalidUrlStringGiven_raiseCorrespondingError() {
+        // Given
+        let sut = SignupWebService(urlString: "")
+
+        // When
+        let exp = expectation(description: "Signup Service expectation ")
+        sut.signup(withForm: signupFormRequestModel) { (signupResponseModel, error) in
+            // Then
+            XCTAssertNil(signupResponseModel)
+            XCTAssertEqual(error, .invalidUrl)
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 10)
+
+    }
+
    
 }
