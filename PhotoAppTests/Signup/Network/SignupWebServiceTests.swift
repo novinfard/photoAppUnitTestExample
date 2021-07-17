@@ -89,5 +89,18 @@ class SignupWebServiceTests: XCTestCase {
 
     }
 
-   
+    func test_whenUrlRequestFails_ReturnsWithDescriptiveError() {
+        let exp = expectation(description: "Signup Service expectation ")
+
+        sut.signup(withForm: signupFormRequestModel) { (signupResponseModel, error) in
+            // Then
+            XCTAssertNil(signupResponseModel)
+            let errorDesc = "This is a localised error description"
+            XCTAssertEqual(error, .failedRequest(description: errorDesc))
+            exp.fulfill()
+        }
+
+
+        wait(for: [exp], timeout: 10)
+    }
 }

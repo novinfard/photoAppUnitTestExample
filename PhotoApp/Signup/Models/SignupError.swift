@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum SignupError: Error {
+enum SignupError: Error, Equatable {
     case responseParseError
     case invalidUrl
+    case failedRequest(description: String)
 }
