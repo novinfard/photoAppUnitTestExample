@@ -36,6 +36,7 @@ class SignupWebServiceTests: XCTestCase {
     override func tearDown() {
         urlSession = nil
         MockURLProtocol.stubResponseData = nil
+        MockURLProtocol.stubError = nil
         signupFormRequestModel = nil
     }
 
@@ -91,11 +92,13 @@ class SignupWebServiceTests: XCTestCase {
 
     func test_whenUrlRequestFails_ReturnsWithDescriptiveError() {
         let exp = expectation(description: "Signup Service expectation ")
+        let errorDesc = "This is a localised error description"
+        MockURLProtocol.stubError =  NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: errorDesc])
+
 
         sut.signup(withForm: signupFormRequestModel) { (signupResponseModel, error) in
             // Then
             XCTAssertNil(signupResponseModel)
-            let errorDesc = "This is a localised error description"
             XCTAssertEqual(error, .failedRequest(description: errorDesc))
             exp.fulfill()
         }
