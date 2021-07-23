@@ -127,14 +127,38 @@
 			path = PhotoAppTests;
 			sourceTree = "<group>";
 		};
+		F23BF8E526AB48EA00A68BFC /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				F23BF8DE26AADAAA00A68BFC /* SignupPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		F23BF8E626AB498400A68BFC /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				F23BF8DA26AAD28D00A68BFC /* SignupPresenterTests.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		F23BF8E726AB499000A68BFC /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				F24EF3DB26A2064500927C2D /* MockURLProtocol.swift */,
+				F23BF8E026AAE34D00A68BFC /* MockSignupModelValidator.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		F24EF3DA26A2062B00927C2D /* Signup */ = {
 			isa = PBXGroup;
 			children = (
+				F23BF8E726AB499000A68BFC /* Mocks */,
+				F23BF8E626AB498400A68BFC /* Presenters */,
 				F2664CFE26A1DD500003A295 /* Network */,
 				F2664CFF26A1DD5E0003A295 /* Models */,
-				F24EF3DB26A2064500927C2D /* MockURLProtocol.swift */,
-				F23BF8DA26AAD28D00A68BFC /* SignupPresenterTests.swift */,
-				F23BF8E026AAE34D00A68BFC /* MockSignupModelValidator.swift */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -142,11 +166,10 @@
 		F2664CFA26A1D1BD0003A295 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
-				F23BF8E226AB3DF800A68BFC /* SignupModelValidatorProtocol.swift */,
+				F23BF8E526AB48EA00A68BFC /* Presenters */,
 				F2664CFD26A1D5930003A295 /* Network */,
 				F2664CFC26A1D5660003A295 /* Controllers */,
 				F2664CFB26A1D1CE0003A295 /* Models */,
-				F23BF8DE26AADAAA00A68BFC /* SignupPresenter.swift */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -154,6 +177,7 @@
 		F2664CFB26A1D1CE0003A295 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F23BF8E226AB3DF800A68BFC /* SignupModelValidatorProtocol.swift */,
 				F2632A532697A181004A5D19 /* SignupFormModelValidator.swift */,
 				F2632A55269832CC004A5D19 /* SignupConstants.swift */,
 				F2664CF426A1913F0003A295 /* SignupFormRequestModel.swift */,
