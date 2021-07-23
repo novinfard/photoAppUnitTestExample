@@ -29,8 +29,12 @@ class SignupPresenterTests: XCTestCase {
         )
 
         let mockSignupModelValidator = MockSignupModelValidator()
-        let sut = SignupPresenter(signupModelValidator: mockSignupModelValidator)
+        let mockSignupWebService = MockSignupWebService()
 
+        let sut = SignupPresenter(
+            signupModelValidator: mockSignupModelValidator,
+            signupWebService: mockSignupWebService
+        )
         sut.processUserSignup(formModel: signupFormModel)
 
         XCTAssertTrue(mockSignupModelValidator.isFirstNameValidated)
@@ -38,6 +42,27 @@ class SignupPresenterTests: XCTestCase {
         XCTAssertTrue(mockSignupModelValidator.isEmailValidated)
         XCTAssertTrue(mockSignupModelValidator.isPasswordValidated)
         XCTAssertTrue(mockSignupModelValidator.doPasswordsMatched)
+    }
+
+    func test_whenGivenValidFormModel_shouldCallSignupModel() {
+        let signupFormModel = SignupFormModel(
+            firstName: "Ahmad",
+            lastName: "Farahani",
+            email: "test@test.com",
+            password: "123123123",
+            rePassword: "123123123"
+        )
+
+        let mockSignupModelValidator = MockSignupModelValidator()
+        let mockSignupWebService = MockSignupWebService()
+
+        let sut = SignupPresenter(
+            signupModelValidator: mockSignupModelValidator,
+            signupWebService: mockSignupWebService
+        )
+        sut.processUserSignup(formModel: signupFormModel)
+
+        XCTAssertTrue(mockSignupWebService.isSignupMethodCalled)
     }
 
 }
