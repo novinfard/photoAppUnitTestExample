@@ -10,17 +10,14 @@ import XCTest
 @testable import PhotoApp
 
 class SignupPresenterTests: XCTestCase {
+    var signupFormModel: SignupFormModel!
+    var mockSignupModelValidator: MockSignupModelValidator!
+    var mockSignupWebService: MockSignupWebService!
+    var sut: SignupPresenter!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func test_whenInformationProvided_willValidateEachProperty() {
-        let signupFormModel = SignupFormModel(
+        self.signupFormModel = SignupFormModel(
             firstName: "Ahmad",
             lastName: "Farahani",
             email: "test@test.com",
@@ -28,13 +25,23 @@ class SignupPresenterTests: XCTestCase {
             rePassword: "123123123"
         )
 
-        let mockSignupModelValidator = MockSignupModelValidator()
-        let mockSignupWebService = MockSignupWebService()
+        self.mockSignupModelValidator = MockSignupModelValidator()
+        self.mockSignupWebService = MockSignupWebService()
 
-        let sut = SignupPresenter(
+        self.sut = SignupPresenter(
             signupModelValidator: mockSignupModelValidator,
             signupWebService: mockSignupWebService
         )
+    }
+
+    override func tearDownWithError() throws {
+        self.signupFormModel = nil
+        self.mockSignupModelValidator = nil
+        self.mockSignupWebService = nil
+        self.sut = nil
+    }
+
+    func test_whenInformationProvided_willValidateEachProperty() {
         sut.processUserSignup(formModel: signupFormModel)
 
         XCTAssertTrue(mockSignupModelValidator.isFirstNameValidated)
@@ -45,21 +52,6 @@ class SignupPresenterTests: XCTestCase {
     }
 
     func test_whenGivenValidFormModel_shouldCallSignupModel() {
-        let signupFormModel = SignupFormModel(
-            firstName: "Ahmad",
-            lastName: "Farahani",
-            email: "test@test.com",
-            password: "123123123",
-            rePassword: "123123123"
-        )
-
-        let mockSignupModelValidator = MockSignupModelValidator()
-        let mockSignupWebService = MockSignupWebService()
-
-        let sut = SignupPresenter(
-            signupModelValidator: mockSignupModelValidator,
-            signupWebService: mockSignupWebService
-        )
         sut.processUserSignup(formModel: signupFormModel)
 
         XCTAssertTrue(mockSignupWebService.isSignupMethodCalled)
