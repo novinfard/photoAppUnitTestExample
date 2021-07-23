@@ -29,11 +29,15 @@ class SignupPresenterTests: XCTestCase {
         )
 
         let mockSignupModelValidator = MockSignupModelValidator()
-        let sut = SignupPresenter()
+        let sut = SignupPresenter(signupModelValidator: mockSignupModelValidator)
 
         sut.processUserSignup(formModel: signupFormModel)
 
         XCTAssertTrue(mockSignupModelValidator.isFirstNameValidated)
+        XCTAssertTrue(mockSignupModelValidator.isLastNameValidated)
+        XCTAssertTrue(mockSignupModelValidator.isEmailValidated)
+        XCTAssertTrue(mockSignupModelValidator.isPasswordValidated)
+        XCTAssertTrue(mockSignupModelValidator.doPasswordsMatched)
     }
 
 }
