@@ -68,7 +68,7 @@ class SignupPresenterTests: XCTestCase {
 
         wait(for: [expectation], timeout: 5)
 
-        XCTAssertEqual(mockSignupViewDelegate.successfulSignupCounter, 1)
+        XCTAssertEqual(mockSignupViewDelegate.successfulSignupCounter, 1, "The signup method should get called only once")
     }
 
 }
