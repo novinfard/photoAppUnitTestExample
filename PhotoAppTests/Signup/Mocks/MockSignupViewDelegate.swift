@@ -12,7 +12,10 @@ import XCTest
 
 class MockSignupViewDelegate: SignupViewDelegateProtocol {
     var expectation: XCTestExpectation?
+    var successfulSignupCounter: Int = 0
+
     func successfulSignup() {
+        successfulSignupCounter += 1
         expectation?.fulfill()
     }
 

@@ -67,6 +67,8 @@ class SignupPresenterTests: XCTestCase {
         sut.processUserSignup(formModel: signupFormModel)
 
         wait(for: [expectation], timeout: 5)
+
+        XCTAssertEqual(mockSignupViewDelegate.successfulSignupCounter, 1)
     }
 
 }
