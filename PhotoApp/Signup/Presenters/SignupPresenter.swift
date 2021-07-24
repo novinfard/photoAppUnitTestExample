@@ -11,11 +11,14 @@ import Foundation
 class SignupPresenter {
     private let signupModelValidator: SignupModelValidatorProtocol
     private let signupWebService: SignupWebServiceProtocol
+    private weak var delegate: SignupViewDelegateProtocol?
 
     init(signupModelValidator: SignupModelValidatorProtocol,
-         signupWebService: SignupWebServiceProtocol) {
+         signupWebService: SignupWebServiceProtocol,
+         delegate: SignupViewDelegateProtocol) {
         self.signupModelValidator = signupModelValidator
         self.signupWebService = signupWebService
+        self.delegate = delegate
     }
 
     func processUserSignup(formModel: SignupFormModel) {
@@ -43,8 +46,12 @@ class SignupPresenter {
 
         // Submit Form
         let requestModel = SignupFormRequestModel.mapFrom(formModel: formModel)
-        signupWebService.signup(withForm: requestModel) { model, error in
-
+        signupWebService.signup(withForm: requestModel) { [weak self] responseModel, error in
+            if let responseModel = responseModel {
+                self?.delegate?.successfulSignup()
+            } else if let error = error {
+                self?.delegate?.errorHandler(error: error)
+            }
         }
     }
 }

@@ -14,6 +14,7 @@ class SignupPresenterTests: XCTestCase {
     var mockSignupModelValidator: MockSignupModelValidator!
     var mockSignupWebService: MockSignupWebService!
     var sut: SignupPresenter!
+    var mockSignupViewDelegate: MockSignupViewDelegate!
 
     override func setUpWithError() throws {
 
@@ -27,10 +28,12 @@ class SignupPresenterTests: XCTestCase {
 
         self.mockSignupModelValidator = MockSignupModelValidator()
         self.mockSignupWebService = MockSignupWebService()
+        self.mockSignupViewDelegate = MockSignupViewDelegate()
 
         self.sut = SignupPresenter(
             signupModelValidator: mockSignupModelValidator,
-            signupWebService: mockSignupWebService
+            signupWebService: mockSignupWebService,
+            delegate: mockSignupViewDelegate
         )
     }
 
@@ -55,6 +58,15 @@ class SignupPresenterTests: XCTestCase {
         sut.processUserSignup(formModel: signupFormModel)
 
         XCTAssertTrue(mockSignupWebService.isSignupMethodCalled)
+    }
+
+    func test_whenSignupOperationSuccessful_callsSuccessOnViewDelegate() {
+        let expectation = expectation(description: "successfulSignup() should called")
+
+        mockSignupViewDelegate.expectation = expectation
+        sut.processUserSignup(formModel: signupFormModel)
+
+        wait(for: [expectation], timeout: 5)
     }
 
 }
