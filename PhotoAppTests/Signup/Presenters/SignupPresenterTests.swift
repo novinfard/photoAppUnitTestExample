@@ -71,4 +71,18 @@ class SignupPresenterTests: XCTestCase {
         XCTAssertEqual(mockSignupViewDelegate.successfulSignupCounter, 1, "The signup method should get called only once")
     }
 
+    func test_whenSignupOperationFails_shouldReturnErrorOnViewDelegate() {
+        let expectation = expectation(description: "fail on signup operation")
+
+        mockSignupWebService.shouldReturnError = true
+        mockSignupViewDelegate.expectation = expectation
+        sut.processUserSignup(formModel: signupFormModel)
+
+        wait(for: [expectation], timeout: 5)
+
+        XCTAssertEqual(mockSignupViewDelegate.successfulSignupCounter, 0)
+        XCTAssertEqual(mockSignupViewDelegate.errorSignupCounter, 1)
+        XCTAssertNotNil(mockSignupViewDelegate.signupError)
+    }
+
 }
